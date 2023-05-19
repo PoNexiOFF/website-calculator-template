@@ -1,31 +1,21 @@
-let result = '';
+let result = document.getElementById('result');
 
-function appendValue(value) {
-  result += value;
-  updateDisplay();
-}
-
-function appendOperator(operator) {
-  result += operator;
-  updateDisplay();
+function append(value) {
+  result.value += value;
 }
 
 function calculate() {
   try {
-    const calculatedResult = eval(result);
-    result = calculatedResult.toString();
-    updateDisplay();
+    result.value = eval(result.value);
   } catch (error) {
-    result = 'Error';
-    updateDisplay();
+    result.value = 'Error';
   }
 }
 
 function clearResult() {
-  result = '';
-  updateDisplay();
+  result.value = '';
 }
 
-function updateDisplay() {
-  document.getElementById('result').value = result;
+function backspace() {
+  result.value = result.value.slice(0, -1);
 }
